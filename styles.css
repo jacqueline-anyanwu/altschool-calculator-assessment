@@ -1,0 +1,284 @@
+* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background: #2c2c2e;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .calculator-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 500px;
+      }
+
+      .calculator {
+        background-color: #242530;
+        border-radius: 20px;
+        padding: 15px;
+        width: 400px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .display {
+        background-color: #3A3F77;
+        border-radius: 20px;
+        padding: 20px;
+        margin-bottom: 20px;
+        min-height: 90px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .expression {
+        color: #999;
+        font-size: 0.9rem;
+        text-align: right;
+        margin-bottom: 5px;
+        min-height: 20px;
+        word-wrap: break-word;
+      }
+
+      #screen {
+        width: 100%;
+        background: transparent;
+        border: none;
+        color: #ffffff;
+        font-size: 2rem;
+        text-align: right;
+        outline: none;
+        font-weight: 400;
+        word-wrap: break-word;
+      }
+
+      .buttons {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-areas: 
+          "n1 n2 n3 mult div"
+          "n4 n5 n6 plus minus"
+          "n7 n8 n9 perc pow"
+          "dot zero back clear equals";
+        gap: 12px;
+      }
+
+      .btn:nth-child(1) { grid-area: n1; }
+      .btn:nth-child(2) { grid-area: n2; }
+      .btn:nth-child(3) { grid-area: n3; }
+      .btn:nth-child(4) { grid-area: mult; }
+      .btn:nth-child(5) { grid-area: div; }
+      .btn:nth-child(6) { grid-area: n4; }
+      .btn:nth-child(7) { grid-area: n5; }
+      .btn:nth-child(8) { grid-area: n6; }
+      .btn:nth-child(9) { grid-area: plus; }
+      .btn:nth-child(10) { grid-area: minus; }
+      .btn:nth-child(11) { grid-area: n7; }
+      .btn:nth-child(12) { grid-area: n8; }
+      .btn:nth-child(13) { grid-area: n9; }
+      .btn:nth-child(14) { grid-area: perc; }
+      .btn:nth-child(15) { grid-area: pow; }
+      .btn:nth-child(16) { grid-area: dot; }
+      .btn:nth-child(17) { grid-area: zero; }
+      .btn:nth-child(18) { grid-area: back; }
+      .btn:nth-child(19) { grid-area: clear; }
+      .btn:nth-child(20) { grid-area: equals; }
+
+      .btn {
+        height: 50px;
+        border: none;
+        border-radius: 46%;
+        font-size: 1.8rem;
+        font-weight: 320;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        outline: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .btn:hover {
+        transform: scale(1.05);
+      }
+
+      .btn:active {
+        transform: scale(0.95);
+      }
+
+      /* Number buttons - Dark blue */
+      .number {
+        background: #404258;
+        color: #ffffff;
+      }
+
+      .number:hover {
+        background: #2f2f63;
+      }
+
+      /* Orange operator buttons */
+      .operator.orange {
+        background: #f49d1a;
+        color: #ffffff;
+      }
+
+      .operator.orange:hover {
+        background: #ffb143;
+      }
+
+      .operator.orange.active {
+        background: #ffffff;
+        color: #ff9f0a;
+      }
+
+      /* Delete operator buttons */
+      .operator:not(.orange) {
+        background: #8e8e93;
+        color: #ffffff;
+      }
+
+      .operator:not(.orange):hover {
+        background: #a8a8ae;
+      }
+
+      /* Clear button */
+      .clear {
+        background: #b2b2b2;
+        color: #ffffff;
+      }
+
+      .clear:hover {
+        background: #ff5252;
+      }
+
+      /* Equals button */
+      .equals {
+        background: #b2b2b2;
+        color: #000;
+      }
+
+      .equals:hover {
+        background: #a8a8ae;
+      }
+
+      /* History Section */
+      .history-section {
+        background-color: #565a86;
+        border-radius: 15px;
+        padding: 12px 15px;
+        margin-bottom: 15px;
+        min-height: 40px;
+        display: flex;
+        align-items: center;
+      }
+
+      .last-calculation {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        gap: 8px;
+      }
+
+      .history-label {
+        color: #999;
+        font-size: 0.85rem;
+        font-weight: 500;
+        flex-shrink: 0;
+      }
+
+      .history-text {
+        color: #ffffff;
+        font-size: 0.9rem;
+        font-weight: 400;
+        flex: 1;
+        text-align: right;
+        word-wrap: break-word;
+        cursor: pointer;
+        transition: color 0.15s ease;
+      }
+
+      .history-text:hover {
+        color: #f49d1a;
+      }
+
+      .history-text.clickable {
+        cursor: pointer;
+      }
+
+      .history-text.clickable:hover {
+        color: #f49d1a;
+      }
+
+      /* Mobile responsiveness */
+      @media (max-width: 768px) {
+        body {
+          padding: 10px;
+        }
+        
+        .calculator {
+          width: 100%;
+          max-width: 350px;
+          padding: 12px;
+        }
+        
+        .btn {
+          height: 45px;
+          font-size: 1.4rem;
+        }
+        
+        #screen {
+          font-size: 1.8rem;
+        }
+        
+        .expression {
+          font-size: 0.8rem;
+        }
+        
+        .history-text {
+          font-size: 0.85rem;
+        }
+        
+        .history-label {
+          font-size: 0.8rem;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .calculator {
+          max-width: 320px;
+          padding: 10px;
+        }
+        
+        .btn {
+          height: 40px;
+          font-size: 1.2rem;
+        }
+        
+        #screen {
+          font-size: 1.6rem;
+        }
+        
+        .buttons {
+          gap: 8px;
+        }
+        
+        .history-text {
+          font-size: 0.8rem;
+        }
+        
+        .history-label {
+          font-size: 0.75rem;
+        }
+      }

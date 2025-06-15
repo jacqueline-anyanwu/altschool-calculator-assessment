@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+<div class="calculator-container">
+      <div class="calculator">
+        <!-- The number display screen -->
+        <div class="display">
+          <div class="expression" id="expression"></div>
+          <div id="screen">0</div>
+        </div>
+
+        <!-- History Section -->
+        <div class="history-section" id="history-section">
+          <div class="last-calculation" id="last-calculation">
+            <span class="history-label">History:</span>
+            <span class="history-text" id="history-text">No calculations yet</span>
+          </div>
+        </div>
+
+        <!-- Calculator Buttons -->
+        <div class="buttons">
+          <!-- First Row: 1 2 3 × ÷ -->
+          <button class="btn number" onclick="inputNumber('1')">1</button>
+          <button class="btn number" onclick="inputNumber('2')">2</button>
+          <button class="btn number" onclick="inputNumber('3')">3</button>
+          <button class="btn operator orange" onclick="setOperator('*')" id="multiply">×</button>
+          <button class="btn operator orange" onclick="setOperator('/')" id="divide">÷</button>
+
+          <!-- Second Row: 4 5 6 + - -->
+          <button class="btn number" onclick="inputNumber('4')">4</button>
+          <button class="btn number" onclick="inputNumber('5')">5</button>
+          <button class="btn number" onclick="inputNumber('6')">6</button>
+          <button class="btn operator orange" onclick="setOperator('+')" id="add">+</button>
+          <button class="btn operator orange" onclick="setOperator('-')" id="subtract">-</button>
+
+          <!-- Third Row: 7 8 9 % ^ -->
+          <button class="btn number" onclick="inputNumber('7')">7</button>
+          <button class="btn number" onclick="inputNumber('8')">8</button>
+          <button class="btn number" onclick="inputNumber('9')">9</button>
+          <button class="btn operator orange" onclick="inputPercent()">%</button>
+          <button class="btn operator orange" onclick="setOperator('^')" id="power">^</button>
+
+          <!-- Fourth Row: . 0 ⌫ C = -->
+          <button class="btn number" onclick="inputNumber('.')">.</button>
+          <button class="btn number" onclick="inputNumber('0')">0</button>
+          <button class="btn operator" onclick="deleteLast()">⌫</button>
+          <button class="btn clear" onclick="clearDisplay()">C</button>
+          <button class="btn equals" onclick="calculateResult()">=</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
